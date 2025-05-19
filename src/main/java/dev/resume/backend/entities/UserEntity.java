@@ -1,15 +1,13 @@
 package dev.resume.backend.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Data
 @Entity(name = "users")
@@ -26,4 +24,7 @@ public class UserEntity {
 
     @Length(min = 6, message = "Password must be at least 6 characters")
     private String password;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 }

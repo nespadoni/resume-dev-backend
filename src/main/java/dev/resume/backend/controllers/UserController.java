@@ -3,7 +3,6 @@ package dev.resume.backend.controllers;
 import dev.resume.backend.dto.CreateUserResponseDTO;
 import dev.resume.backend.dto.UserRequestDTO;
 import dev.resume.backend.dto.UserResponseDTO;
-import dev.resume.backend.dto.VerifyEmailRequestDTO;
 import dev.resume.backend.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -29,8 +28,8 @@ public class UserController {
     }
 
     @PostMapping("/verify-email")
-    public ResponseEntity<String> verifyEmail(@RequestBody VerifyEmailRequestDTO request) {
-        String response = userService.verifyEmail(request.email(), request.code());
+    public ResponseEntity<String> verifyEmail(@RequestBody String email, String code) {
+        String response = userService.verifyEmail(email, code);
         return ResponseEntity.ok(response);
     }
 

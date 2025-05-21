@@ -1,4 +1,13 @@
 package dev.resume.backend.dto;
 
-public class UserResponseDTO {
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+public record UserResponseDTO(
+        UUID id,
+        String name,
+        String email,
+        boolean emailVerified,
+        LocalDateTime createdAt
+) {
 }

@@ -26,6 +26,12 @@ public class UserEntity {
     @Length(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
+    private boolean emailVerified = false;
+    private String verificationCode;
+
+    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    private LocalDateTime verificationCodeCreatedAt;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 }

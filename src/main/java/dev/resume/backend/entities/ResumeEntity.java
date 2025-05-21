@@ -23,7 +23,7 @@ public class ResumeEntity {
     private UserEntity user;
 
     @Column(name = "user_id")
-    private String userId;
+    private UUID userId;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

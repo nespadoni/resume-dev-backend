@@ -41,6 +41,12 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error", e.getMessage());
     }
 
+    @ExceptionHandler(VerificationCodeNotFoundException.class)
+    public ResponseEntity<?> handleCodeNotFound(VerificationCodeNotFoundException e) {
+        return buildResponse(HttpStatus.NOT_FOUND, "Verification code not found", e.getMessage());
+    }
+
+
     private ResponseEntity<Map<String, Object>> buildResponse(HttpStatus status, String error, String message) {
         return ResponseEntity.status(status).body(
                 Map.of(

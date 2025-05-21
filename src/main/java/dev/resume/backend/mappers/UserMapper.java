@@ -1,5 +1,6 @@
 package dev.resume.backend.mappers;
 
+import dev.resume.backend.dto.CreateUserResponseDTO;
 import dev.resume.backend.dto.UserRequestDTO;
 import dev.resume.backend.dto.UserResponseDTO;
 import dev.resume.backend.entities.UserEntity;
@@ -13,4 +14,9 @@ public interface UserMapper {
     void updateEntityFromDto(UserRequestDTO dto, @MappingTarget UserEntity entity);
 
     UserResponseDTO toResponse(UserEntity entity);
+
+    default CreateUserResponseDTO toCreateResponse(UserEntity entity, String message) {
+        return new CreateUserResponseDTO(toResponse(entity), message);
+    }
+
 }
